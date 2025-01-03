@@ -1,0 +1,37 @@
+body {
+    background-image: url("../images/patter-Cocktail.png");
+    color: #000;
+}
+
+.contenedor {
+    height: 90vh;
+    justify-items: center;
+    align-content: center;
+    width: 25rem;
+}
+
+.title {
+    color: #efefef !important;
+}
+
+.formu {
+    border: 2px solid #000;
+    border-radius: 15px;
+    background-color: #efefef;
+}
+
+.butons {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.resultados {
+    justify-items: center;
+    width: 25rem;
+}
+
+.imag {
+    border-radius: 15px !important;
+}
+

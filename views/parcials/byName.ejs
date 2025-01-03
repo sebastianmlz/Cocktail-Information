@@ -1,0 +1,43 @@
+<div class="container resultados mb-3">
+
+  <div class="card resultado p-1" style="width: 20rem;">
+    <% if (result.strDrinkThumb) { %>
+      <!-- Usar la imagen de la API con /preview -->
+      <img src="<%= result.strDrinkThumb %>/preview" class="card-img-top imag" alt="<%= result.strDrink %>">
+    <% } else if (result.strImageSource) { %>
+      <!-- Usar la imagen alternativa si está disponible -->
+      <img src="<%= result.strImageSource %>" class="card-img-top imag" alt="<%= result.strDrink %>">
+    <% } else { %>
+      <!-- Usar una imagen por defecto -->
+      <img src="/images/whisper-img.jpg" class="card-img-top imag" alt="Default image">
+    <% } %>
+
+    <div class="card-body">
+      <div>
+        <p> <strong>Name: </strong> <%= result.strDrink %></p>
+        <p> <strong>Category: </strong> <%= result.strCategory %></p>
+        <p> <strong>Alcoholic: </strong> <%= result.strAlcoholic %></p>
+        <p> <strong>Glass: </strong> <%= result.strGlass %></p>
+        <h3>Ingredients</h3>
+        <ul>
+          <% for (let i = 1; i <= 15; i++) { %>
+            <% const ingredient = result['strIngredient' + i]; %>
+            <% const measure = result['strMeasure' + i]; %>
+            <% if (ingredient) { %>
+              <div>
+                <li><%= ingredient %></li>
+                <strong>Measure:</strong> <%= measure %>
+              </div>
+            <% } %>
+          <% } %>
+        </ul>
+        <h3>Instructions</h3>
+        <p> <%= result.strInstructions %> </p>
+      </div>
+      <p class="card-text"> </p>
+    </div>
+    
+  </div>
+
+    
+</div>

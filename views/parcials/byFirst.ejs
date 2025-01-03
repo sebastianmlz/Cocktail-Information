@@ -1,0 +1,50 @@
+<div class="container ">
+
+    <div class="row" style=" justify-content: center;">
+
+        <% for(let i=0 ; i < result.length ; i++) { %>
+
+            <div class="card resultado items m-4 p-1" style="width: 20rem;">
+                <% if (result[i].strDrinkThumb) { %>
+                    <!-- Usar la imagen de la API con /preview -->
+                    <img src="<%= result[i].strDrinkThumb %>/preview" class="card-img-top imag" alt="<%= result[i].strDrink %>">
+                <% } else if (result[i].strImageSource) { %>
+                    <!-- Usar la imagen alternativa si está disponible -->
+                    <img src="<%= result[i].strImageSource %>" class="card-img-top imag" alt="<%= result[i].strDrink %>">
+                <% } else { %>
+                    <!-- Usar una imagen por defecto -->
+                    <img src="/images/whisper-img.jpg" class="card-img-top" alt="Default image imag">
+                <% } %>
+            
+                <div class="card-body">
+                    <div>
+                        <p> <strong>Name: </strong> <%= result[i].strDrink %></p>
+                        <p> <strong>Category: </strong> <%= result[i].strCategory %></p>
+                        <p> <strong>Alcoholic: </strong> <%= result[i].strAlcoholic %></p>
+                        <p> <strong>Glass: </strong> <%= result[i].strGlass %></p>
+                        <h3>Ingredients</h3>
+                        <ul>
+                        <% for (let j = 1; j <= 15; j++) { %>
+                            <% const ingredient = result[i]['strIngredient' + j]; %>
+                            <% const measure = result[i]['strMeasure' + j]; %>
+                            <% if (ingredient) { %>
+                            <div>
+                                <li><%= ingredient %></li>
+                                <strong>Measure:</strong> <%= measure %>
+                            </div>
+                            <% } %>
+                        <% } %>
+                        </ul>
+                        <h3>Instructions</h3>
+                        <p> <%= result[i].strInstructions %> </p>
+                    </div>
+                    <p class="card-text"> </p>
+                </div>
+                
+            </div>
+
+        <% } %>
+
+    </div>
+
+</div>
